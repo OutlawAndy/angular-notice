@@ -29,7 +29,7 @@
       angular.module('MyApp',['push.notice','ngAnimate'])
       .controller('AppCtrl',function($scope, Notifier) {
         $scope.notice = function(){
-          Notifier.notice("Hello, World... WooHoo!");
+          Notifier.notice("WooHoo!");
         }
         $scope.warn = function(){
           Notifier.warn("Oh, Crap!");
