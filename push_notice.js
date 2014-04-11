@@ -4,7 +4,7 @@
 
   pn = angular.module('push.notice', []);
 
-  pn.service("Notifier", [
+  pn.service("notifier", [
     '$rootScope', function($rootScope) {
       this.notice = function(message) {
         return $rootScope.$broadcast("push:notice", message);
@@ -28,7 +28,7 @@
       template: template,
       require: '^notifications',
       link: function(scope, el, attrs, ctrl) {
-        return scope.hide = function() {
+        scope.hide = function() {
           return ctrl.hide(scope.message.id);
         };
       }
@@ -37,7 +37,7 @@
 
   pn.directive("notifications", function() {
     return {
-      restrict: 'E',
+      restrict: 'EA',
       replace: true,
       scope: {},
       template: "<div class=\"notifications\"><push ng-repeat=\"push in notes\" message=\"push\"></push></div>",
@@ -46,7 +46,7 @@
         scope.$on("push:notice", function(event, msg) {
           return scope.push('notice', msg);
         });
-        return scope.$on("push:warning", function(event, msg) {
+        scope.$on("push:warning", function(event, msg) {
           return scope.push('warning', msg);
         });
       }

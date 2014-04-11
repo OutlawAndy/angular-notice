@@ -27,12 +27,12 @@
     </div>
     <script>
       angular.module('MyApp',['push.notice','ngAnimate'])
-      .controller('AppCtrl',function($scope, Notifier) {
+      .controller('AppCtrl',function($scope, notifier) {
         $scope.notice = function(){
-          Notifier.notice("WooHoo!");
+          notifier.notice("WooHoo!");
         }
         $scope.warn = function(){
-          Notifier.warn("Oh, Crap!");
+          notifier.warn("Oh, Crap!");
         }
       });
     </script>

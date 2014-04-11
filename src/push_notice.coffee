@@ -1,6 +1,6 @@
 pn = angular.module 'push.notice', []
 
-pn.service "Notifier",
+pn.service "notifier",
 [ '$rootScope', ($rootScope) ->
   this.notice = (message) ->
     $rootScope.$broadcast "push:notice", message
@@ -27,10 +27,10 @@ pn.directive "push", ->
   link: (scope, el, attrs, ctrl) ->
     scope.hide = ->
       ctrl.hide(scope.message.id)
-
+    return
 
 pn.directive "notifications", ->
-  restrict: 'E'
+  restrict: 'EA'
   replace: true
   scope: {}
   template: "<div class=\"notifications\"><push ng-repeat=\"push in notes\" message=\"push\"></push></div>"
@@ -40,7 +40,7 @@ pn.directive "notifications", ->
       scope.push 'notice', msg
     scope.$on "push:warning", (event, msg) ->
       scope.push 'warning', msg
-
+    return
 
 pn.controller 'pushCtrl',
 ['$scope', '$element', '$timeout',
