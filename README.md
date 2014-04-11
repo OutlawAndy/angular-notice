@@ -1,0 +1,1 @@
+Check out this very basic [demo](http://outlawandy.github.io/angular-notice)
