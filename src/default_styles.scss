@@ -1,0 +1,79 @@
+@mixin transition($prop,$timing,$duration) {
+  -webkit-transition: $prop $timing $duration;
+  -moz-transition: $prop $timing $duration;
+  -ms-transition: $prop $timing $duration;
+  -o-transition: $prop $timing $duration;
+  transition: $prop $timing $duration;
+}
+@mixin translate($x,$y) {
+  -webkit-transform: translate($x,$y);
+  -moz-transform: translate($x,$y);
+  -ms-transform: translate($x,$y);
+  -o-transform: translate($x,$y);
+  transform: translate($x,$y);
+}
+@mixin translateAndSkew($dist,$deg) {
+  -webkit-transform: skewX($deg) translateX($dist);
+  -moz-transform: skewX($deg) translateX($dist);
+  -ms-transform: skewX($deg) translateX($dist);
+  -o-transform: skewX($deg) translateX($dist);
+  transform: skewX($deg) translateX($dist);
+}
+
+.notifications {
+  @include translate(450px,0);
+  @include transition(all,ease-in,0.5s);
+}
+.push.ng-move,
+.push.ng-enter,
+.push.ng-leave, .push {
+  @include transition(all,ease-in,0.5s);
+}
+.push.ng-enter {
+  @include translate(-450px,-100px);
+  opacity: 0;
+}
+.push.ng-leave.ng-leave-active {
+  @include translateAndSkew(200px,-35deg);
+  opacity: 0;
+}
+.push.ng-leave, .push.ng-enter.ng-enter-active {
+  @include translateAndSkew(-450px,0deg);
+  opacity: 1;
+}
+.notifications {
+  position:fixed;
+  z-index:100;
+  width:30%;
+  top:5px;
+  right:5px;
+  height:4rem;
+}
+.push {
+  opacity:1;
+  font-weight:bold;
+  font-size:1em;
+  height:4em;
+  margin:auto;
+  margin-bottom:5px;
+  width:100%;
+  border-radius:5px;
+  box-shadow:inset 0 0 1px 1px rgba(90,90,90,0.3);
+  @include translate(-450px,0);
+  .message {
+    display:inline-block;
+    margin: 1em;
+    color:#333;
+  }
+  i.icon.close {
+    margin-top:15px;
+    margin-right:15px;
+    float:right;
+  }
+}
+.push.notice {
+  background-color: rgba(28, 255, 245,0.8);
+}
+.push.warning {
+  background-color: rgba(240, 89, 64,0.8);
+}

@@ -1,0 +1,24 @@
+{
+  "name": "angular-notice",
+  "version": "0.0.1",
+  "homepage": "https://github.com/OutlawAndy/angular-notice",
+  "authors": [
+    "Andy Cohen <outlawandy@gmail.com>"
+  ],
+  "description": "a simple push notice implementation in angular",
+  "main": "push_notice.js",
+  "keywords": [
+    "angular",
+    "notification",
+    "push notification",
+    "flash"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

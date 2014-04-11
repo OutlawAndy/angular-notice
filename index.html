@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angular + Notice</title>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.13.0/css/semantic.css" rel="stylesheet" type="text/css">
+    <link href="default_styles.css" rel="stylesheet" type="text/css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-animate.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+    <script src="push_notice.js"></script>
+  </head>
+  <body ng-app="MyApp">
+
+    <notifications></notifications>
+    <div class="ui grid">
+      <div class="column" ng-controller="AppCtrl">
+        <div class="ui stacked segment" style="margin:100px auto;padding:100px;text-align:center;">
+          <h1 class="ui header"><a href="http://github.com/outlawandy/angular-notice">Angular-Notice</a> Demo</h1>
+          <div class="ui divider"></div>
+          <div class="ui large or buttons">
+            <div class="ui teal button" ng-click="notice()">Push Notice</div>
+            <div class="or"></div>
+            <div class="ui orange button" ng-click="warn()">Push Warning</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      angular.module('MyApp',['push.notice','ngAnimate'])
+      .controller('AppCtrl',function($scope, Notifier) {
+        $scope.notice = function(){
+          Notifier.notice("Hello, World... WooHoo!");
+        }
+        $scope.warn = function(){
+          Notifier.warn("Oh, Crap!");
+        }
+      });
+    </script>
+  </body>
+</html>
